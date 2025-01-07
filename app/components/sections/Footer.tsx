@@ -70,7 +70,7 @@ export default function Footer() {
           >
             <p className="flex items-center justify-center gap-2">
               Made with{" "}
-              <motion.div
+              <motion.span
                 animate={{
                   scale: [1, 1.2, 1],
                 }}
@@ -81,7 +81,7 @@ export default function Footer() {
                 }}
               >
                 <Heart className="h-4 w-4 text-red-500" />
-              </motion.div>
+              </motion.span>
               {" "}using Next.js & Three.js
             </p>
             <p className="mt-2">

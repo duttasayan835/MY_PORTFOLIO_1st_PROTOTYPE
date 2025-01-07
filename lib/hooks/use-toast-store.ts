@@ -1,7 +1,7 @@
 "use client";
 
 import { create } from "zustand";
-import { ToastActionElement, ToastProps } from "@/components/ui/toast";
+import { ToastProps, ToastActionElement } from "@/components/ui/toast/toast";
 
 type ToasterToast = ToastProps & {
   id: string;
@@ -30,7 +30,7 @@ export const useToastStore = create<ToastStore>((set) => ({
     const id = genId();
     set((state) => ({
       toasts: [
-        { ...toast, id, open: true, onOpenChange: (open) => {
+        { ...toast, id, open: true, onOpenChange: (open: boolean) => {
           if (!open) state.dismissToast(id);
         }},
         ...state.toasts,
