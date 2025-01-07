@@ -3,19 +3,10 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Heart } from "lucide-react";
-import { useEffect, useState } from "react";
+import { TimeDisplay } from "./Footer/TimeDisplay";
+import { Suspense } from "react";
 
 export default function Footer() {
-  const [time, setTime] = useState(new Date());
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <footer className="py-12 relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-white/[0.02] bg-grid" />
@@ -49,19 +40,9 @@ export default function Footer() {
             <p className="text-muted-foreground mt-2">
               Web Developer & AI Specialist
             </p>
-            <motion.div
-              className="mt-4 font-mono text-sm text-primary/80"
-              animate={{
-                opacity: [0.5, 1, 0.5],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                repeatType: "reverse",
-              }}
-            >
-              {time.toLocaleTimeString()}
-            </motion.div>
+            <Suspense fallback={<div className="mt-4 h-6" />}>
+              <TimeDisplay />
+            </Suspense>
           </motion.div>
 
           <motion.div
